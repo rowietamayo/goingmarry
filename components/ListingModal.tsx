@@ -128,10 +128,10 @@ const ListingModal: React.FC<ListingModalProps> = ({ isOpen, onClose, onAddProdu
         {/* Close Button - Upper Right */}
         <button
           onClick={onClose}
-          className="absolute top-8 right-8 text-wedding-charcoal/40 hover:text-wedding-gold focus:text-wedding-gold outline-none transition-colors text-4xl leading-none font-light z-10"
+          className="absolute top-4 right-4 text-wedding-charcoal/40 hover:text-wedding-gold focus:text-wedding-gold outline-none transition-colors text-3xl leading-none font-light z-10 bg-wedding-ivory/60 backdrop-blur-md w-10 h-10 flex items-center justify-center rounded-full border border-wedding-gold/10 shadow-sm hover:shadow-md"
           aria-label="Close modal"
         >
-          &times;
+          <span className="mb-1">&times;</span>
         </button>
 
         <div className="p-12 flex justify-between items-center border-b border-wedding-gold/10">

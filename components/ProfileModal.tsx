@@ -78,8 +78,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
             'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({ name, boutiqueName })
-        }),
-        new Promise(resolve => setTimeout(resolve, 3000))
+        })
       ]);
 
       const data = await response.json();
@@ -110,8 +109,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
         fetch('/api/auth/profile', {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
-        }),
-        new Promise(resolve => setTimeout(resolve, 3000))
+        })
       ]);
 
       if (response.ok) {
@@ -138,8 +136,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
         fetch(`/api/admin/sellers/${id}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
-        }),
-        new Promise(resolve => setTimeout(resolve, 4000))
+        })
       ]);
 
       if (response.ok) {
@@ -200,9 +197,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
       <div className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 relative shadow-2xl border border-wedding-gold/20 flex flex-col md:flex-row gap-8">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-wedding-charcoal/40 hover:text-wedding-gold transition-colors"
+          className="absolute top-4 right-4 text-wedding-charcoal/40 hover:text-wedding-gold transition-colors text-3xl leading-none font-light z-20 bg-wedding-ivory/60 backdrop-blur-md w-10 h-10 flex items-center justify-center rounded-full border border-wedding-gold/10 shadow-sm hover:shadow-md"
+          aria-label="Close modal"
         >
-          <Icons.Close />
+          <span className="mb-1">&times;</span>
         </button>
 
         {/* Sidebar / Profile Stats */}

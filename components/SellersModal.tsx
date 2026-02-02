@@ -66,10 +66,17 @@ const SellersModal: React.FC<SellersModalProps> = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-wedding-charcoal/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
 
-      <div className="relative bg-white w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in-95 duration-300">
+      <div className="relative bg-white w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col shadow-2xl border border-wedding-gold/10 animate-in zoom-in-95 duration-300">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-wedding-charcoal/40 hover:text-wedding-gold transition-colors text-3xl leading-none font-light z-20 bg-wedding-ivory/60 backdrop-blur-md w-10 h-10 flex items-center justify-center rounded-full border border-wedding-gold/10 shadow-sm hover:shadow-md"
+          aria-label="Close modal"
+        >
+          <span className="mb-1">&times;</span>
+        </button>
+
         <div className="p-8 border-b border-wedding-gold/20 flex justify-between items-center bg-wedding-ivory">
           <h2 className="serif text-3xl italic text-wedding-charcoal">Registered Sellers</h2>
-          <button onClick={onClose} className="text-wedding-charcoal/40 hover:text-wedding-gold transition-colors text-2xl">&times;</button>
         </div>
 
         <div className="p-8 overflow-y-auto">
