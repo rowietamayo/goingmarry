@@ -101,10 +101,7 @@ const App: React.FC = () => {
   const handleSaveProduct = async (product: Product, isNew: boolean = false) => {
     setGlobalLoading(true);
     try {
-      await Promise.all([
-        api.saveProduct(product, isNew),
-        new Promise(resolve => setTimeout(resolve, 3000))
-      ]);
+      await api.saveProduct(product, isNew);
       await loadProducts();
       setEditingProduct(undefined);
     } catch (err) {
@@ -123,10 +120,7 @@ const App: React.FC = () => {
     if (window.confirm('Are you sure you want to remove this piece from the boutique?')) {
       setGlobalLoading(true);
       try {
-        await Promise.all([
-          api.deleteProduct(id),
-          new Promise(resolve => setTimeout(resolve, 3000))
-        ]);
+        await api.deleteProduct(id);
         await loadProducts();
       } catch (err) {
         alert('Failed to delete product');
@@ -142,9 +136,6 @@ const App: React.FC = () => {
   };
 
   const initiateCheckout = async () => {
-    setGlobalLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    setGlobalLoading(false);
     setCheckoutStep('review');
   };
 
