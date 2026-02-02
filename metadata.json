@@ -1,0 +1,8 @@
+
+{
+  "name": "Rowie and Larry's Wedding Collection",
+  "description": "Collection by Rowie & Larry featuring curated preloved wedding items for your special day",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
