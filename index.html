@@ -1,10 +1,22 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoingMarry | Reloved Bridal Treasures</title>
+
+    <meta
+    name="description"
+    content="Reloved bridal treasures from our celebration to yours. Discover wedding pieces ready to create new memories."
+  />
+  <meta property="og:title" content="GoingMarry | Reloved Bridal Treasures" />
+  <meta
+    property="og:description"
+    content="From our celebration to your big day. Reloved bridal pieces ready to create new memories."
+  />
+    <meta property="og:url" content="https://goingmarry.rowimaytamayo.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://goingmarry.vercel.app/docs/hero_bg.jpg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -12,47 +24,68 @@
           extend: {
             colors: {
               wedding: {
-                gold: '#C5A059',
-                goldLight: '#E5C687',
-                ivory: '#FFFDF9',
-                charcoal: '#2D2D2D',
-                sage: '#8A9A5B'
-              }
+                gold: "#C5A059",
+                goldLight: "#E5C687",
+                ivory: "#FFFDF9",
+                charcoal: "#2D2D2D",
+                sage: "#8A9A5B",
+              },
             },
             fontFamily: {
-              serif: ['"Playfair Display"', 'serif'],
-              sans: ['"Inter"', 'sans-serif']
-            }
-          }
-        }
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+          },
+        },
       }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #FFFDF9; color: #2D2D2D; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .gold-gradient { background: linear-gradient(135deg, #C5A059 0%, #E5C687 100%); }
-        .border-gold { border-color: #C5A059; }
-        .text-gold { color: #C5A059; }
-        .bg-ivory { background-color: #FFFDF9; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FFFDF9; }
-        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 10px; }
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fffdf9;
+        color: #2d2d2d;
+      }
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #c5a059 0%, #e5c687 100%);
+      }
+      .border-gold {
+        border-color: #c5a059;
+      }
+      .text-gold {
+        color: #c5a059;
+      }
+      .bg-ivory {
+        background-color: #fffdf9;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fffdf9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c5a059;
+        border-radius: 10px;
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-<body>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.2.3",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+          "react/": "https://esm.sh/react@^19.2.3/",
+          "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
