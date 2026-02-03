@@ -27,9 +27,13 @@ app.use('/products', productRoutes);
 app.use('/add/products', productRoutes);
 app.use('/admin', adminRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  if (!process.env.JWT_SECRET) {
-      console.warn('WARNING: JWT_SECRET is not set. Using default "secret". This is insecure for production.');
-  }
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    if (!process.env.JWT_SECRET) {
+        console.warn('WARNING: JWT_SECRET is not set. Using default "secret". This is insecure for production.');
+    }
+  });
+}

@@ -50,26 +50,29 @@ The application will be available at `http://localhost:3000`.
 
 ---
 
-## 🚀 Deployment
+## 🚀 Deployment (Unified Vercel Hosting)
 
-### Backend (Render)
-1. **Create a Web Service** on Render.
-2. **Build Command**: `cd server && npm install && npm run build`
-3. **Start Command**: `cd server && npm start`
-4. **Environment Variables**:
-   - `DATABASE_URL`: Your PostgreSQL connection string.
-   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
-   - `JWT_SECRET`: A secure random string.
-   - `VALID_MEMBERSHIP_CODE`: For seller registration.
-5. **Database Setup**: After deployment, run the setup script once via Render's "Shell" or a one-time job: `cd server && npm run db:setup`.
+We now host both the Frontend and Backend on **Vercel** for faster performance and easier management.
 
-### Frontend (Vercel)
-1. **Connect your repository** to Vercel.
-2. **Framework Preset**: Vite.
-3. **Internal API Proxy**: The `api.ts` file automatically uses `/api` for local dev.
-4. **Environment Variables**:
-   - `VITE_API_URL`: Set this to your **Render backend URL** (e.g., `https://your-app.onrender.com`).
-   - `VITE_GOINGMARRY_API_KEY`: Your Gemini API key.
+### Unified Deployment
+1.  **Connect your repository** to Vercel.
+2.  **Framework Preset**: Vite.
+3.  **Root Directory**: `./` (default).
+4.  **Environment Variables**:
+    You must add all these to your **Vercel Project Settings**:
+
+    | Category | Key | Value Description |
+    |----------|-----|-------------------|
+    | **DB** | `DATABASE_URL` | Your Neon PostgreSQL connection string |
+    | **Auth** | `JWT_SECRET` | A secure random string for tokens |
+    | **Cloudinary**| `CLOUDINARY_CLOUD_NAME` | Your Cloudinary Cloud Name |
+    | **Cloudinary**| `CLOUDINARY_API_KEY` | Your Cloudinary API Key |
+    | **Cloudinary**| `CLOUDINARY_API_SECRET` | Your Cloudinary API Secret |
+    | **AI** | `VITE_GOINGMARRY_API_KEY` | Your Gemini API Key |
+    | **App** | `VALID_MEMBERSHIP_CODE` | Code for seller registration |
+    | **App** | `VITE_API_URL` | Set to `/api` (for unified hosting) |
+
+5.  **Build & Deploy**: Vercel will automatically detect the `vercel.json` and route `/api` requests to the serverless backend.
 
 
 ---
