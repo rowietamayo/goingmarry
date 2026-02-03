@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- The Hull -->
+  <path d="M3 13c0 4 3 6 9 6s9-2 9-6" />
+  <path d="M2.5 12h19" />
+  <path d="M4 12V10h12v2" />
+
+  <!-- The Mast & Crow's Nest -->
+  <path d="M12 10V2.5" stroke-width="1.5" />
+  <path d="M11 3.5h2" />
+
+  <!-- The Main Sail -->
+  <path d="M12 4c4.5 0 6.5 2 6.5 4.5S16.5 13 12 13s-6.5-1.5-6.5-4.5S7.5 4 12 4z" />
+
+  <!-- Waves -->
+  <path d="M2 21c2 0 3-1 4-1s2 1 4 1s3-1 4-1s2 1 4 1s3-1 4-1" opacity="0.4" />
+
+  <!-- Merry Sheep Head -->
+  <circle cx="21.5" cy="12" r="2.5" />
+  <path d="M20 10.5c-.8-.8-1.2 0-.8.8" />
+  <path d="M23 10.5c.8-.8 1.2 0 .8.8" />
+  <circle cx="20.8" cy="12" r="0.3" fill="#C5A059" />
+  <circle cx="22.2" cy="12" r="0.3" fill="#C5A059" />
+</svg>
