@@ -5,7 +5,6 @@ import { authenticateToken } from '../middleware/auth';
 const router = express.Router();
 
 // Initialize Gemini with server-side API Key
-// VITE_ prefix is not needed on the server, but we check for common variations
 const apiKey = process.env.GOINGMARRY_API_KEY || process.env.VITE_GOINGMARRY_API_KEY || process.env.API_KEY || '';
 
 if (!apiKey) {
@@ -22,7 +21,6 @@ router.post('/analyze', authenticateToken, async (req: any, res: any) => {
     }
 
     try {
-        // Extract base64 data if it's a data URI
         const base64Data = imageUrl.includes('base64,')
             ? imageUrl.split('base64,')[1]
             : imageUrl;

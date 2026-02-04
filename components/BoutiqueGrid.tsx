@@ -3,6 +3,7 @@ import React from 'react';
 import { CATEGORIES } from '../constants';
 import { Category, Product, Seller, SortOption } from '../types';
 import ProductCard from './ProductCard';
+import ProductSkeleton from './ProductSkeleton';
 import SortDropdown from './SortDropdown';
 
 interface BoutiqueGridProps {

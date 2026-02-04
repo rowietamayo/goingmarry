@@ -47,11 +47,16 @@ import { initDb } from './db';
 
 import adminRoutes from './routes/admin';
 
-app.use('/auth', authRoutes);
-app.use('/products', productRoutes);
-app.use('/add/products', productRoutes);
-app.use('/admin', adminRoutes);
-app.use('/ai', aiRoutes);
+const apiRouter = express.Router();
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/products', productRoutes);
+apiRouter.use('/add/products', productRoutes);
+apiRouter.use('/admin', adminRoutes);
+apiRouter.use('/ai', aiRoutes);
+
+// Handle both /api/path and /path
+app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 export default app;
 

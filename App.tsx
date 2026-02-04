@@ -186,6 +186,7 @@ const App: React.FC = () => {
          setIsListingModalOpen={setIsListingModalOpen}
          setEditingProduct={setEditingProduct}
          onPreview={(product) => setPreviewProduct(product)}
+         isLoading={isLoadingProducts}
       />
 
       {/* Cart Drawer */}
