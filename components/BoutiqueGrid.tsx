@@ -19,6 +19,7 @@ interface BoutiqueGridProps {
     setIsListingModalOpen: (isOpen: boolean) => void;
     setEditingProduct: (p: Product | undefined) => void;
     onPreview: (p: Product) => void;
+    isLoading?: boolean;
 }
 
 const BoutiqueGrid: React.FC<BoutiqueGridProps> = ({
@@ -34,7 +35,8 @@ const BoutiqueGrid: React.FC<BoutiqueGridProps> = ({
     handleDelete,
     setIsListingModalOpen,
     setEditingProduct,
-    onPreview
+    onPreview,
+    isLoading = false
 }) => {
   return (
     <section id="boutique" className="max-w-6xl mx-auto px-6 py-24 border-t border-wedding-gold/10">
@@ -61,19 +63,23 @@ const BoutiqueGrid: React.FC<BoutiqueGridProps> = ({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {filteredItems.map(item => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              onAddToCart={() => setCart([...cart, item])}
-              onEdit={() => handleEdit(item)}
-              onDelete={() => handleDelete(item.id)}
-              onMessage={() => {}}
-              onPreview={onPreview}
-              currentUser={authenticatedSeller}
-              cart={cart}
-            />
-          ))}
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => <ProductSkeleton key={i} />)
+          ) : (
+            filteredItems.map(item => (
+              <ProductCard
+                key={item.id}
+                product={item}
+                onAddToCart={() => setCart([...cart, item])}
+                onEdit={() => handleEdit(item)}
+                onDelete={() => handleDelete(item.id)}
+                onMessage={() => {}}
+                onPreview={onPreview}
+                currentUser={authenticatedSeller}
+                cart={cart}
+              />
+            ))
+          )}
         </div>
 
         {authenticatedSeller && (

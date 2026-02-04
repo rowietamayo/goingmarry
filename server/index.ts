@@ -13,8 +13,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 import { initDb } from './db';
 
-// ...
-
 // Initialize DB
 (async () => {
     await initDb();

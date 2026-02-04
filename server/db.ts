@@ -3,8 +3,13 @@ import { Pool } from 'pg';
 
 dotenv.config();
 
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
+    connectionTimeoutMillis: 10000, // 10s timeout
+    ssl: {
+        rejectUnauthorized: false // Required for Neon/Postgres unless CA certs are configured
+    }
 });
 
 // Type parsers to ensure BigInts (like timestamps) are returned as numbers
@@ -30,7 +35,7 @@ export const db = {
     run: async (text: string, params?: any[]) => {
         const res = await pool.query(text, params);
         return {
-            lastID: null, // PG doesn't return lastID this way usually, requires RETURNING id
+            lastID: null,
             changes: res.rowCount
         };
     },
@@ -42,10 +47,16 @@ export const db = {
 
 export const initDb = async () => {
     try {
-        console.log('PostgreSQL database driver initialized');
+        const start = Date.now();
+        // Test the connection with a simple query
+        await pool.query('SELECT NOW()');
+        console.log(`PostgreSQL database connected successfully in ${Date.now() - start}ms`);
         return db;
-    } catch (error) {
-        console.error('Failed to initialize database', error);
+    } catch (error: any) {
+        console.error('CRITICAL: Failed to initialize database');
+        console.error('Message:', error.message);
+        console.error('Code:', error.code);
+        if (error.detail) console.error('Detail:', error.detail);
         throw error;
     }
 };

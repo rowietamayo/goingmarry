@@ -17,17 +17,21 @@ import { Category, Product, Seller, SortOption } from './types';
 const App: React.FC = () => {
   // Persistence Initialization (The "Backend" Sync)
   const [items, setItems] = useState<Product[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
 
   useEffect(() => {
     loadProducts();
   }, []);
 
   const loadProducts = async () => {
+    setIsLoadingProducts(true);
     try {
       const products = await api.getProducts();
       setItems(products);
     } catch (err) {
       console.error('Failed to load products', err);
+    } finally {
+      setIsLoadingProducts(false);
     }
   };
 
