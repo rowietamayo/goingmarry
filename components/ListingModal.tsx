@@ -117,6 +117,13 @@ const ListingModal: React.FC<ListingModalProps> = ({ isOpen, onClose, onAddProdu
     }
   };
 
+  const getOptimizedUrl = (url: string | null) => {
+    if (url && url.includes('res.cloudinary.com')) {
+      return url.replace('/upload/', '/upload/f_auto,q_auto/');
+    }
+    return url || DEFAULT_IMAGE;
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-wedding-charcoal/70 backdrop-blur-md animate-in fade-in duration-500"
@@ -179,7 +186,7 @@ const ListingModal: React.FC<ListingModalProps> = ({ isOpen, onClose, onAddProdu
                 )}
                 {image ? (
                   <>
-                      <img src={image} alt="Uploaded preview" className="w-full h-full object-cover group-hover:opacity-75 transition-opacity" />
+                      <img src={getOptimizedUrl(image)} alt="Uploaded preview" className="w-full h-full object-cover group-hover:opacity-75 transition-opacity" />
                        {image !== DEFAULT_IMAGE && (
                          <button
                             type="button"

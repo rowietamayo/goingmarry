@@ -56,6 +56,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
+  const getOptimizedUrl = (url: string) => {
+    if (url.includes('res.cloudinary.com')) {
+      return url.replace('/upload/', '/upload/f_auto,q_auto/');
+    }
+    return url;
+  };
+
   return (
     <article
       className={`group bg-white overflow-hidden transition-all duration-700 flex flex-col border border-wedding-gold/10 hover:border-wedding-gold/30 shadow-sm hover:shadow-2xl ${role === 'guest' ? 'cursor-pointer' : ''}`}
@@ -64,10 +71,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-wedding-ivory">
         <img
-          src={product.imageUrl}
+          src={getOptimizedUrl(product.imageUrl)}
           alt={product.name}
           onContextMenu={handleContextMenu}
           onDragStart={(e) => e.preventDefault()}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 select-none pointer-events-auto"
         />
 

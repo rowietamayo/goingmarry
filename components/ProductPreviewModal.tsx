@@ -49,6 +49,13 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({
     }, 1500);
   };
 
+  const getOptimizedUrl = (url: string) => {
+    if (url.includes('res.cloudinary.com')) {
+      return url.replace('/upload/', '/upload/f_auto,q_auto/');
+    }
+    return url;
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-wedding-charcoal/80 backdrop-blur-md animate-in fade-in duration-500">
       <div
@@ -64,11 +71,10 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({
         >
           <span className="mb-1">&times;</span>
         </button>
-
         {/* Image Section */}
         <div className="md:w-1/2 h-96 md:h-auto md:min-h-[500px] bg-wedding-ivory relative border-b md:border-b-0 md:border-r border-wedding-gold/10 overflow-hidden">
           <img
-            src={product.imageUrl}
+            src={getOptimizedUrl(product.imageUrl)}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-1000"
             onContextMenu={(e) => e.preventDefault()}
