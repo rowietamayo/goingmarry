@@ -42,11 +42,10 @@ export const db = {
 
 export const initDb = async () => {
     try {
-        await pool.query('SELECT NOW()'); // Test connection
-        console.log('Connected to PostgreSQL database');
+        console.log('PostgreSQL database driver initialized');
         return db;
     } catch (error) {
-        console.error('Failed to connect to database', error);
+        console.error('Failed to initialize database', error);
         throw error;
     }
 };

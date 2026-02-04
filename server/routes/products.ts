@@ -18,6 +18,8 @@ const mapProduct = (p: any) => ({
 router.get('/', async (req, res) => {
   try {
     const products = await db.all('SELECT * FROM products ORDER BY createdAt DESC');
+    // Cache for 1 minute, serve stale for up to 1 hour while revalidating
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=3600');
     res.json(products.map(mapProduct));
   } catch (error) {
     console.error('SERVER ERROR (GET /products):', error);
