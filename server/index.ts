@@ -1,13 +1,33 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
+import aiRoutes from './routes/ai';
 import authRoutes from './routes/auth';
 import productRoutes from './routes/products';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+const allowedOrigins = [
+  'https://goingmarry.rowimaytamayo.com',
+  'https://the-goingmarry.vercel.app',
+  'http://localhost:3000',
+  'http://localhost:3001'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn('Blocked by CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
@@ -24,6 +44,7 @@ app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/add/products', productRoutes);
 app.use('/admin', adminRoutes);
+app.use('/ai', aiRoutes);
 
 export default app;
 

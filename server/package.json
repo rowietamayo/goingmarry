@@ -11,6 +11,7 @@
     "db:optimize": "ts-node scripts/add_indexes.ts"
   },
   "dependencies": {
+    "@google/genai": "^1.39.0",
     "@types/pg": "^8.16.0",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.9.0",
